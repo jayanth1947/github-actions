@@ -16,3 +16,22 @@ jobs:
               run: npm install
             - name: Run Test
               run: npm test
+
+    deploy:  #Every Job has its own runners
+        runs-on: ubuntu-latest
+        steps:
+            - name: check code
+              uses: actions/checkout@v3 # uses - when you use a particular action
+              with:                      #with is used when a parameters are required for the action
+                fetch-depth: full
+            - name: Install NodeJs    # Installing NodeJs
+              uses: actions/setup-node@v3
+              with:
+                node-version: 20
+            - name: Install Dependencies
+              run: npm install
+            - name: Build Project
+              run: npm run build
+            - name: Deploying
+              run: echo "Deploying.."
+              
