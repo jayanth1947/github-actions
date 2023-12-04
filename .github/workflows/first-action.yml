@@ -18,7 +18,7 @@ jobs:
               run: npm test
 
     deploy:  #Every Job has its own runners
-        needs: testing #Runs the job when the first job is executed
+        needs: testing
         runs-on: ubuntu-latest
         steps:
             - name: check code
